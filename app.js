@@ -6,6 +6,7 @@ var bodyParser = require("body-parser");
 
 const hospitalsRouter = require("./routes/hospitals");
 const ventilatorsRouter = require("./routes/ventilators");
+const authentificationRouter = require("./routes/authentification");
 
 const MongoClient = require("mongodb").MongoClient;
 
@@ -24,6 +25,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
   console.log(`Database : ${dbName}`);
   app.use("/hospitals", hospitalsRouter);
   app.use("/ventilators", ventilatorsRouter);
+  app.use("/auth", authentificationRouter);
 });
 
 app.use(logger("dev"));
